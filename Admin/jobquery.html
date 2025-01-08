@@ -207,9 +207,13 @@
 
                     <th>Sr No.</th>
                     <th>User Name</th>
-                    <th>Email</th>
+                    <th>Email</th>                  
                     <th>Job Name</th>
                     <th>Description</th>
+                    <th>authorizedToWorkInUS</th>
+                    <th>needSponsorship</th>
+                    <th>haveHB2Visa</th>
+                    <th>haveGreenCard</th>
                     <!-- <th>Resume</th> -->
                 </tr>
             </thead>
@@ -255,6 +259,10 @@
                                 <td>${user.email}</td>
                                 <td>${user.title || "Not Provided"}</td>
                                 <td>${user.description || "Not Assigned"}</td>
+                                <td>${user.authorizedToWorkInUS || "Not Assigned"}</td>
+                                <td>${user.needSponsorship || "Not Assigned"}</td>
+                                <td>${user.haveHB2Visa || "Not Assigned"}</td>
+                                <td>${user.haveGreenCard || "Not Assigned"}</td>
                             </tr>
                         `;
                         $("#userTable tbody").append(row);
