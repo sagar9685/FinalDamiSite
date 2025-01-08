@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not Eligible</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff4e50, #f9d423);
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            overflow: hidden;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .card-body {
+            padding: 30px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            animation: fadeInDown 1s ease;
+        }
+        p {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            animation: fadeIn 1.5s ease;
+        }
+        .btn {
+            background: #f9d423;
+            color: #ff4e50;
+            border: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background: #ff4e50;
+            color: #fff;
+            transform: scale(1.1);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center">
+        <div class="card animate__animated animate__fadeInUp">
+            <div class="card-body">
+                <h1>Sorry, You're Not Eligible!</h1>
+                <p>Unfortunately, you do not meet the criteria for this job. Explore other opportunities that may be a better fit for you.</p>
+                <a href="job-list.html" class="btn">Check Other Jobs</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap and Animation Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
