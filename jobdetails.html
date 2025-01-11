@@ -1,369 +1,486 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <title>Job Details - DeetechConsulting</title>
-    <link rel="icon" href="img/Deetech_Logo.png" type="image/png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="img/favicon.ico" rel="icon">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="icon" href="img/Deetech_Logo.png" type="image/png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="img/favicon.ico" rel="icon" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
     <style>
-        /* Custom Styles for Job Details with 3D Effects */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
-        }
+      /* Custom Styles for Job Details with 3D Effects */
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f8f9fa;
+      }
 
-        .navbar {
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
+      .navbar {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      }
 
-        .navbar-brand h1 {
-            font-size: 2rem;
-        }
+      .navbar-brand h1 {
+        font-size: 2rem;
+      }
 
+      #job-details {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1),
+          0 4px 10px rgba(0, 0, 0, 0.05);
+        padding: 40px;
+        max-width: 800px;
+        margin: auto;
+        transition: transform 0.3s ease;
+      }
+
+      #job-details:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15),
+          0 8px 12px rgba(0, 0, 0, 0.07);
+      }
+
+      .job-item h3 {
+        font-size: 2rem;
+        font-weight: 600;
+        color: #007bff;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+      }
+
+      .job-item p {
+        font-size: 1rem;
+        margin-bottom: 10px;
+      }
+
+      .job-item p strong {
+        color: #333;
+      }
+
+      .job-item img {
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      #apply-button {
+        font-size: 1.2rem;
+        padding: 12px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+
+      .apply-button:hover {
+        background-color: #0056b3;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
+      }
+
+      .no-logo-text {
+        color: #999;
+        font-style: italic;
+      }
+
+      /* Media Queries for responsiveness */
+      @media (max-width: 768px) {
         #job-details {
-            background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.05);
-            padding: 40px;
-            max-width: 800px;
-            margin: auto;
-            transition: transform 0.3s ease;
-        }
-
-        #job-details:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 8px 12px rgba(0, 0, 0, 0.07);
+          padding: 20px;
         }
 
         .job-item h3 {
-            font-size: 2rem;
-            font-weight: 600;
-            color: #007bff;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+          font-size: 1.5rem;
         }
+      }
 
-        .job-item p {
-            font-size: 1rem;
-            margin-bottom: 10px;
-        }
-
-        .job-item p strong {
-            color: #333;
-        }
-
-        .job-item img {
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        #apply-button {
-            font-size: 1.2rem;
-            padding: 12px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        .apply-button:hover {
-            background-color: #0056b3;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
-        }
-
-        .no-logo-text {
-            color: #999;
-            font-style: italic;
-        }
-
-        /* Media Queries for responsiveness */
-        @media (max-width: 768px) {
-            #job-details {
-                padding: 20px;
-            }
-
-            .job-item h3 {
-                font-size: 1.5rem;
-            }
-        }
-
-        /* Modal Styles */
-        .modal-content {
-            padding: 20px;
-        }
-        .modal-header {
-            border-bottom: 1px solid #ddd;
-        }
-        .modal-footer {
-            border-top: 1px solid #ddd;
-        }
+      /* Modal Styles */
+      .modal-content {
+        padding: 20px;
+      }
+      .modal-header {
+        border-bottom: 1px solid #ddd;
+      }
+      .modal-footer {
+        border-top: 1px solid #ddd;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container-xxl bg-white p-0">
-         <!-- Navbar Start -->
-         <div class="container-fluid sticky-top px-0">
-            <div class="position-absolute bg-dark" style="left: 0; top: 0; width: 100%; height: 100%;">
-            </div>
-            <div class="container px-0">
-                <nav class="navbar navbar-expand-lg navbar-dark bg-blue py-3 px-4">
-                    <a href="index.html" class="navbar-brand p-0">
-                        <!-- <h1 class="text-primary m-0"><i class="fas fa-donate me-3"></i>Deetech Consulting</h1> -->
-                        <h1 class="text-primary m-0">
-                            <img src="img/Deetech_Logo.png" alt="Deetech Logo" height="100" width="250" class="me-3">
-                        
-                        </h1>
-                        
-                        <!-- <img src="img/logo.png" alt="Logo"> -->
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                        <span class="fa fa-bars"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarCollapse">
-                        <div class="navbar-nav ms-auto py-0">
-                            <a href="index.html" class="nav-item nav-link ">Home</a>
-                            <a href="about.html" class="nav-item nav-link">About</a>
-                            <a href="service.html" class="nav-item nav-link">Services</a>
-                            <a href="project.html" class="nav-item nav-link">Projects</a>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown ">Pages</a>
-                                <div class="dropdown-menu m-0">
-                                    <a href="blog.html" class="dropdown-item">Our Blog</a>
-                                    <a href="team.html" class="dropdown-item">Our Team</a>
-                                    <!-- <a href="testimonial.html" class="dropdown-item">Testimonial</a> -->
-                                    <a href="faqs.html" class="dropdown-item">Training</a>
-                                    <a href="job-list.html" class="dropdown-item active">Job List</a>
-                                </div>
-                            </div>
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
-                        </div>
-                       <!-- Login and Signup Buttons Start -->
-<div class="d-flex align-items-center flex-nowrap pt-xl-0">
-    <a href="login.html" id="loginButton" class="btn btn-primary rounded-pill text-white py-2 px-4 mx-2">
-        Login
-    </a>
-    <a href="signup.html" id="signupButton" class="btn btn-primary rounded-pill text-white py-2 px-4 mx-2">
-        Signup
-    </a>
-    <a href="profile.html" id="profileButton" class="btn btn-primary rounded-pill text-white py-2 px-4 mx-2" style="display: none;">
-        Profile
-    </a>
-    <a href="#" id="logoutButton" class="btn btn-primary rounded-pill text-white py-2 px-4 mx-2" style="display: none;">
-        Logout
-    </a>
-</div>
-<!-- Login and Signup Buttons End -->
+      <!-- Navbar Start -->
+      <div class="container-fluid sticky-top px-0">
+        <div
+          class="position-absolute bg-dark"
+          style="left: 0; top: 0; width: 100%; height: 100%"
+        ></div>
+        <div class="container px-0">
+          <nav class="navbar navbar-expand-lg navbar-dark bg-blue py-3 px-4">
+            <a href="index.html" class="navbar-brand p-0">
+              <!-- <h1 class="text-primary m-0"><i class="fas fa-donate me-3"></i>Deetech Consulting</h1> -->
+              <h1 class="text-primary m-0">
+                <img
+                  src="img/Deetech_Logo.png"
+                  alt="Deetech Logo"
+                  height="100"
+                  width="250"
+                  class="me-3"
+                />
+              </h1>
 
-
-                    </div>
-                </nav>
-            </div>
-        </div>
-        <!-- Navbar End -->
-
-        <!-- Job Details Start -->
-        <div class="container py-5">
-            <div id="job-details" class="p-4 bg-light shadow rounded">
-                <!-- Job details will be injected here dynamically -->
-            </div>
-        </div>
-
-        <!-- Modal for collecting user inputs -->
-        <div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="applyModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="applyModalLabel">Job Application Details</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="applyForm">
-                            <div class="mb-3">
-                                <label for="authorizedToWorkInUS" class="form-label">Authorized to work in the US?</label>
-                                <select id="authorizedToWorkInUS" class="form-select">
-                                    <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="needSponsorship" class="form-label">Need sponsorship?</label>
-                                <select id="needSponsorship" class="form-select">
-                                    <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="haveHB2Visa" class="form-label">Have HB2 Visa?</label>
-                                <select id="haveHB2Visa" class="form-select">
-                                    <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="haveGreenCard" class="form-label">Have Green Card?</label>
-                                <select id="haveGreenCard" class="form-select">
-                                    <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
-                                </select>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary" id="submitApplication">Submit Application</button>
-                    </div>
+              <!-- <img src="img/logo.png" alt="Logo"> -->
+            </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarCollapse"
+            >
+              <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+              <div class="navbar-nav ms-auto py-0">
+                <a href="index.html" class="nav-item nav-link">Home</a>
+                <a href="about.html" class="nav-item nav-link">About</a>
+                <a href="service.html" class="nav-item nav-link">Services</a>
+                <a href="project.html" class="nav-item nav-link">Projects</a>
+                <div class="nav-item dropdown">
+                  <a
+                    href="#"
+                    class="nav-link dropdown-toggle active"
+                    data-bs-toggle="dropdown "
+                    >Pages</a
+                  >
+                  <div class="dropdown-menu m-0">
+                    <a href="blog.html" class="dropdown-item">Our Blog</a>
+                    <a href="team.html" class="dropdown-item">Our Team</a>
+                    <!-- <a href="testimonial.html" class="dropdown-item">Testimonial</a> -->
+                    <a href="faqs.html" class="dropdown-item">Training</a>
+                    <a href="job-list.html" class="dropdown-item active"
+                      >Job List</a
+                    >
+                  </div>
                 </div>
+                <a href="contact.html" class="nav-item nav-link">Contact</a>
+              </div>
+              <!-- Login and Signup Buttons Start -->
+              <div class="d-flex align-items-center flex-nowrap pt-xl-0">
+                <a
+                  href="login.html"
+                  id="loginButton"
+                  class="btn btn-primary rounded-pill text-white py-2 px-4 mx-2"
+                >
+                  Login
+                </a>
+                <a
+                  href="signup.html"
+                  id="signupButton"
+                  class="btn btn-primary rounded-pill text-white py-2 px-4 mx-2"
+                >
+                  Signup
+                </a>
+                <a
+                  href="profile.html"
+                  id="profileButton"
+                  class="btn btn-primary rounded-pill text-white py-2 px-4 mx-2"
+                  style="display: none"
+                >
+                  Profile
+                </a>
+                <a
+                  href="#"
+                  id="logoutButton"
+                  class="btn btn-primary rounded-pill text-white py-2 px-4 mx-2"
+                  style="display: none"
+                >
+                  Logout
+                </a>
+              </div>
+              <!-- Login and Signup Buttons End -->
             </div>
+          </nav>
         </div>
+      </div>
+      <!-- Navbar End -->
+
+      <!-- Job Details Start -->
+      <div class="container py-5">
+        <div id="job-details" class="p-4 bg-light shadow rounded">
+          <!-- Job details will be injected here dynamically -->
+        </div>
+      </div>
+
+      <!-- Modal for collecting user inputs -->
+      <div
+        class="modal fade"
+        id="applyModal"
+        tabindex="-1"
+        aria-labelledby="applyModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="applyModalLabel">
+                Job Application Details
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form id="applyForm">
+                <div class="mb-3">
+                  <label for="authorizedToWorkInUS" class="form-label"
+                    >Authorized to work in the US?</label
+                  >
+                  <select id="authorizedToWorkInUS" class="form-select">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="needSponsorship" class="form-label"
+                    >Need sponsorship?</label
+                  >
+                  <select id="needSponsorship" class="form-select">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="haveHB2Visa" class="form-label"
+                    >Have HB2 Visa?</label
+                  >
+                  <select id="haveHB2Visa" class="form-select">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="haveGreenCard" class="form-label"
+                    >Have Green Card?</label
+                  >
+                  <select id="haveGreenCard" class="form-select">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                id="submitApplication"
+              >
+                Submit Application
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const authToken = localStorage.getItem("authToken");
-            if (authToken) {
-                document.getElementById("profileButton").style.display = "inline-block";
-                document.getElementById("logoutButton").style.display = "inline-block";
-                document.getElementById("loginButton").style.display = "none";
-                document.getElementById("signupButton").style.display = "none";
-            } else {
-                document.getElementById("loginButton").style.display = "inline-block";
-                document.getElementById("signupButton").style.display = "inline-block";
-                document.getElementById("profileButton").style.display = "none";
-                document.getElementById("logoutButton").style.display = "none";
+      document.addEventListener("DOMContentLoaded", function () {
+        const authToken = localStorage.getItem("authToken");
+        if (authToken) {
+          document.getElementById("profileButton").style.display =
+            "inline-block";
+          document.getElementById("logoutButton").style.display =
+            "inline-block";
+          document.getElementById("loginButton").style.display = "none";
+          document.getElementById("signupButton").style.display = "none";
+        } else {
+          document.getElementById("loginButton").style.display = "inline-block";
+          document.getElementById("signupButton").style.display =
+            "inline-block";
+          document.getElementById("profileButton").style.display = "none";
+          document.getElementById("logoutButton").style.display = "none";
+        }
+
+        document
+          .getElementById("logoutButton")
+          .addEventListener("click", function () {
+            localStorage.removeItem("authToken");
+            window.location.href = "login.html";
+          });
+
+        const jobTitle = new URLSearchParams(window.location.search).get("id");
+        if (!jobTitle) {
+          alert("Job ID is missing!");
+          return;
+        }
+
+        // Check application status
+        const checkApplicationStatus = () => {
+          $.ajax({
+            url: `https://deetech-production.onrender.com/api/jobs/checkApplicationStatus/${jobTitle}`,
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${authToken}`,
+            },
+            success: function (response) {
+              if (response.applied) {
+                const applyButton = document.getElementById("apply-button");
+                applyButton.textContent = "Applied";
+                applyButton.classList.add("disabled");
+                applyButton.disabled = true;
+              }
+            },
+            error: function (xhr, status, error) {
+              console.error(`Error checking application status: ${error}`);
+            },
+          });
+        };
+
+        $.ajax({
+          url: `https://deetech-production.onrender.com/api/jobs/singlejob/${jobTitle}`,
+          method: "GET",
+          success: function (job) {
+            if (!job) {
+              alert("Job not found.");
+              return;
             }
 
-            document.getElementById("logoutButton").addEventListener("click", function () {
-                localStorage.removeItem("authToken");
-                window.location.href = "login.html";
-            });
+            const jobDetails = `
+                <div class="job-item mb-4">
+                    <h3>${job.title}</h3>
+                    <p><strong>Company:</strong> ${job.company}</p>
+                    <p><strong>Location:</strong> ${job.state}, ${
+              job.country
+            }</p>
+                    <p><strong>Job Type:</strong> ${job.jobtype}</p>
+                    <p><strong>Salary:</strong> ${job.salary}</p>
+                    <p><strong>Description:</strong> ${job.description}</p>
+                    <p><strong>Education Required:</strong> ${job.education}</p>
+                    <p><strong>Experience:</strong> ${job.experience}</p>
+                    <p><strong>Specialization:</strong> ${
+                      job.specialization
+                    }</p>
+                    <p><strong>Last Date to Apply:</strong> ${new Date(
+                      job.lastdatetoapply
+                    ).toLocaleDateString()}</p>
+                    <p><strong>Number of Posts:</strong> ${
+                      job.numberofposts
+                    }</p>
+                    <p><strong>Website:</strong> <a href="${
+                      job.website
+                    }" target="_blank">${job.website}</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:${job.email}">${
+              job.email
+            }</a></p>
+                    <button class="btn btn-primary" id="apply-button" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Now</button>
+                </div>
+            `;
+            $("#job-details").html(jobDetails);
 
-            const jobTitle = new URLSearchParams(window.location.search).get("id");
-            if (!jobTitle) {
-                alert("Job ID is missing!");
-                return;
-            }
+            checkApplicationStatus();
 
-            $.ajax({
-                url: `https://deetech-production.onrender.com/api/jobs/singlejob/${jobTitle}`,
-                method: "GET",
-                success: function (job) {
-                    if (!job) {
-                        alert("Job not found.");
-                        return;
-                    }
+            document
+              .getElementById("submitApplication")
+              .addEventListener("click", function () {
+                const isLoggedIn = sessionStorage.getItem("authToken") !== null;
+                if (!isLoggedIn) {
+                  window.location.href = "login.html";
+                } else {
+                  const userProfile = {
+                    fullName: sessionStorage.getItem("userFullName"),
+                    mobile: sessionStorage.getItem("userMobile"),
+                    resume: sessionStorage.getItem("userResume"),
+                  };
 
-                    const jobDetails = `
-                        <div class="job-item mb-4">
-                            <h3>${job.title}</h3>
-                            <p><strong>Company:</strong> ${job.company}</p>
-                            <p><strong>Location:</strong> ${job.state}, ${job.country}</p>
-                            <p><strong>Job Type:</strong> ${job.jobtype}</p>
-                            <p><strong>Salary:</strong> ${job.salary}</p>
-                            <p><strong>Description:</strong> ${job.description}</p>
-                            <p><strong>Education Required:</strong> ${job.education}</p>
-                            <p><strong>Experience:</strong> ${job.experience}</p>
-                            <p><strong>Specialization:</strong> ${job.specialization}</p>
-                            <p><strong>Last Date to Apply:</strong> ${new Date(job.lastdatetoapply).toLocaleDateString()}</p>
-                            <p><strong>Number of Posts:</strong> ${job.numberofposts}</p>
-                            <p><strong>Website:</strong> <a href="${job.website}" target="_blank">${job.website}</a></p>
-                            <p><strong>Email:</strong> <a href="mailto:${job.email}">${job.email}</a></p>
-                            <button class="btn btn-primary" id="apply-button" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Now</button>
-                        </div>
-                    `;
-                    $("#job-details").html(jobDetails);
+                  const mandatoryFields = ["fullName", "mobile", "resume"];
+                  const isProfileComplete = mandatoryFields.every(
+                    (field) =>
+                      userProfile[field] &&
+                      userProfile[field] !== "N/A" &&
+                      userProfile[field] !== "Not Uploaded"
+                  );
 
-                    document.getElementById("apply-button").addEventListener("click", function () {
-                        const isLoggedIn = sessionStorage.getItem("authToken") !== null;
-                        if (isLoggedIn) {
-                            const userProfile = {
-                                fullName: sessionStorage.getItem("userFullName"),
-                                mobile: sessionStorage.getItem("userMobile"),
-                                resume: sessionStorage.getItem("userResume"),
-                            };
+                  if (!isProfileComplete) {
+                    alert(
+                      "Your profile is incomplete. Please complete all mandatory fields."
+                    );
+                    window.location.href = "profile.html";
+                  }
+                  const jobApplication = {
+                    jobId: jobTitle,
+                    authorizedToWorkInUS: document.getElementById(
+                      "authorizedToWorkInUS"
+                    ).value,
+                    needSponsorship:
+                      document.getElementById("needSponsorship").value,
+                    haveHB2Visa: document.getElementById("haveHB2Visa").value,
+                    haveGreenCard:
+                      document.getElementById("haveGreenCard").value,
+                  };
 
-                            const mandatoryFields = ["fullName", "mobile", "resume"];
-                            const isProfileComplete = mandatoryFields.every(
-                                (field) => userProfile[field] && userProfile[field] !== "N/A" && userProfile[field] !== "Not Uploaded"
-                            );
+                  $.ajax({
+                    url: "https://deetech-production.onrender.com/api/jobs/apply",
+                    method: "POST",
+                    contentType: "application/json",
+                    headers: {
+                      Authorization: `Bearer ${sessionStorage.getItem(
+                        "authToken"
+                      )}`, // Include the auth token in headers
+                    },
+                    data: JSON.stringify(jobApplication),
+                    success: function (response) {
+                      alert(response.message || "Job applied successfully!");
+                      $("#applyModal").modal("hide");
 
-                            if (!isProfileComplete) {
-                                alert("Your profile is incomplete. Please complete all mandatory fields.");
-                                window.location.href = "profile.html";
-                            }
-                        } else {
-                            window.location.href = "login.html";
-                        }
-                    });
-
-                    document.getElementById("submitApplication").addEventListener("click", function () {
-                        const isLoggedIn = sessionStorage.getItem("authToken") !== null;
-                        if (!isLoggedIn) {
-                            window.location.href = "login.html";
-                        } else {
-                            const userProfile = {
-                                fullName: sessionStorage.getItem("userFullName"),
-                                mobile: sessionStorage.getItem("userMobile"),
-                                resume: sessionStorage.getItem("userResume"),
-                            };
-
-                            const mandatoryFields = ["fullName", "mobile", "resume"];
-                            const isProfileComplete = mandatoryFields.every(
-                                (field) => userProfile[field] && userProfile[field] !== "N/A" && userProfile[field] !== "Not Uploaded"
-                            );
-
-                            if (!isProfileComplete) {
-                                alert("Your profile is incomplete. Please complete all mandatory fields.");
-                                window.location.href = "profile.html";
-                            } else {
-                                const jobApplication = {
-                                    jobId: jobTitle,
-                                    authorizedToWorkInUS: document.getElementById("authorizedToWorkInUS").value,
-                                    needSponsorship: document.getElementById("needSponsorship").value,
-                                    haveHB2Visa: document.getElementById("haveHB2Visa").value,
-                                    haveGreenCard: document.getElementById("haveGreenCard").value,
-                                };
-
-                                $.ajax({
-                                    url: "https://deetech-production.onrender.com/api/jobs/apply",
-                                    method: "POST",
-                                    contentType: "application/json",
-                                    data: JSON.stringify(jobApplication),
-                                    success: function (response) {
-                                        alert(response.message || "Job applied successfully!");
-                    $('#applyModal').modal('hide');
-                },
-                error: function (xhr) {
-                    if (xhr.status === 400) {
+                      // Disable the apply button and change text to "Applied"
+                      document.getElementById("apply-button").innerText =
+                        "Applied";
+                      document.getElementById("apply-button").disabled = true;
+                    },
+                    error: function (xhr) {
+                      if (xhr.status === 400) {
                         const response = JSON.parse(xhr.responseText);
-                        alert(response.message || "You already applied for this job");
-                    } else {
-                        alert("There was an issue with your application. Please try again later.");
-                    }
-                                    }        });
-                            }
-                        }
-                    });
-                },
-                error: function (xhr, status, error) {
-                    alert(`Error: ${error}`);
+                        alert(
+                          response.message || "You already applied for this job"
+                        );
+                      } else {
+                        alert(
+                          "There was an issue with your application. Please try again later."
+                        );
+                      }
+                    },
+                  });
                 }
-            });
+              });
+          },
+          error: function (xhr, status, error) {
+            alert(`Error: ${error}`);
+          },
         });
+      });
     </script>
-</body>
-
+  </body>
 </html>
