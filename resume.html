@@ -9,188 +9,96 @@
       rel="stylesheet"
     />
     <style>
-      /* Global Reset */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      /* Styling the body */
-      body {
-        font-family: "Arial", sans-serif;
-        background-color: #f8f9fa; /* Light background */
-        color: #333;
-        line-height: 1.6;
-      }
-
-      /* Container for the entire form */
+      /* General form container styling */
       .form-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        padding: 40px;
-        background: linear-gradient(to right, #00bfff, #0047ab);
-      }
-
-      /* Contact form styles */
-      .contact_form {
-        background: #ffffff; /* White background for form */
-        padding: 40px;
-        border-radius: 15px;
         max-width: 600px;
-        width: 100%;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease-in-out;
+        margin: 50px auto;
+        background: #f7f7f7;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        font-family: "Arial", sans-serif;
       }
 
-      .contact_form:hover {
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-      }
-
-      /* Form Header */
+      /* Form header */
       .contact_form h2 {
-        font-size: 28px;
         text-align: center;
         margin-bottom: 20px;
-        color: #0047ab; /* Darker blue for the header */
-        text-transform: uppercase;
-        letter-spacing: 1px;
+        color: #333;
       }
 
-      /* Form group layout */
+      /* Form group styling */
       .form-group {
-        margin-bottom: 25px;
-        position: relative;
-        display: flex;
-        align-items: center;
+        margin-bottom: 15px;
       }
 
-      /* Label styling */
       .form-group label {
         display: block;
-        font-size: 14px;
-        color: #495057; /* Darker label color */
+        margin-bottom: 5px;
+        color: #555;
         font-weight: bold;
-        margin-bottom: 10px;
-        flex: 1;
       }
 
-      /* Textbox styling */
+      /* Input and textarea styling */
       .form-control {
         width: 100%;
-        padding: 15px;
-        font-size: 15px;
-        border: 2px solid #ced4da;
-        border-radius: 8px;
-        transition: all 0.3s ease;
-        margin-left: 10px; /* Space between emoji and input */
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        transition: border-color 0.3s ease-in-out;
       }
 
       .form-control:focus {
-        border-color: #007bff; /* Bootstrap primary color */
-        box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
+        border-color: #007bff;
         outline: none;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
       }
 
-      /* File input styling */
+      /* Custom file input styling */
       .custom-file-input {
         display: none;
       }
 
       .custom-file-label {
-        display: flex;
-        align-items: center;
-        padding: 15px;
-        font-size: 15px;
-        border: 2px solid #ced4da;
-        border-radius: 8px;
+        display: block;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background: #fff;
         cursor: pointer;
-        background-color: white;
+        text-align: center;
       }
 
       .custom-file-label:hover {
-        border-color: #007bff; /* Change to primary color on hover */
+        background: #f1f1f1;
       }
 
-      /* Styling the button */
+      /* Error messages */
+      .alert-danger {
+        color: #d9534f;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+        padding: 10px;
+        border-radius: 4px;
+        margin-top: 5px;
+      }
+
+      /* Button styling */
       .button-contactForm {
-        display: inline-block;
-        padding: 15px 25px;
-        background-color: #007bff; /* Bootstrap primary color */
-        color: white;
-        border: none;
-        border-radius: 8px;
-        font-size: 16px;
-        font-weight: bold;
-        text-transform: uppercase;
-        cursor: pointer;
         width: 100%;
-        transition: background-color 0.3s ease, transform 0.3s ease;
+        padding: 12px;
+        background: #007bff;
+        border: none;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out;
       }
 
       .button-contactForm:hover {
-        background-color: #0056b3; /* Darker blue on hover */
-        transform: translateY(-2px);
-      }
-
-      /* Success/Error Message */
-      .msg-box {
-        margin-bottom: 20px;
-        text-align: center;
-      }
-
-      /* Error and success message style */
-      .alert {
-        padding: 15px;
-        margin-bottom: 20px;
-        border-radius: 5px;
-        text-align: center;
-        font-weight: bold;
-      }
-
-      .alert-success {
-        background-color: #d4edda; /* Light green */
-        color: #155724; /* Darker green */
-      }
-
-      .alert-danger {
-        background-color: #f8d7da; /* Light red */
-        color: #721c24; /* Darker red */
-      }
-      #country {
-        width: 100%;
-        padding: 12px;
-        font-size: 25px;
-        border: 2px solid #ced4da;
-        border-radius: 8px;
-        margin-left: 10px; /* Add some space from label */
-      }
-
-      /* Show focus effect on country select dropdown */
-      #country:focus {
-        border-color: #007bff; /* Blue border on focus */
-        box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
-        outline: none;
-      }
-
-      /* Responsive for smaller screens */
-      @media (max-width: 768px) {
-        .contact_form {
-          padding: 20px;
-        }
-      }
-
-      @media (max-width: 576px) {
-        .form-control {
-          font-size: 14px;
-          padding: 10px;
-        }
-
-        .button-contactForm {
-          font-size: 14px;
-        }
+        background: #0056b3;
       }
     </style>
   </head>
@@ -265,6 +173,11 @@
             <option value="Other">Other</option>
             <option value="Prefer not to say">Prefer not to say</option>
           </select>
+          <div
+            class="alert alert-danger"
+            id="sexError"
+            style="display: none"
+          ></div>
         </div>
 
         <div class="form-group">
@@ -285,6 +198,11 @@
             <option value="Two or More Races">Two or More Races</option>
             <option value="Prefer not to say">Prefer not to say</option>
           </select>
+          <div
+            class="alert alert-danger"
+            id="raceError"
+            style="display: none"
+          ></div>
         </div>
 
         <div class="form-group">
@@ -297,6 +215,26 @@
             </option>
             <option value="Prefer not to say">Prefer not to say</option>
           </select>
+          <div
+            class="alert alert-danger"
+            id="ethnicityError"
+            style="display: none"
+          ></div>
+        </div>
+        <div class="form-group">
+          <label for="country">Country 🌍</label>
+          <select id="country" class="form-control" required>
+            <option value="">Select Country</option>
+            <option value="USA">United States</option>
+            <option value="IND">India</option>
+            <option value="CAN">Canada</option>
+            <!-- Add more countries as needed -->
+          </select>
+          <div
+            class="alert alert-danger"
+            id="countryError"
+            style="display: none"
+          ></div>
         </div>
 
         <div class="form-group">
@@ -354,6 +292,11 @@
             <option value="WI">Wisconsin</option>
             <option value="WY">Wyoming</option>
           </select>
+          <div
+            class="alert alert-danger"
+            id="stateError"
+            style="display: none"
+          ></div>
         </div>
 
         <!-- Education Section -->
@@ -490,7 +433,11 @@
         const address = document.getElementById("address").value;
         const mobile = document.getElementById("mobile").value;
         const email = document.getElementById("email").value;
+        const race = document.getElementById("race").value;
         const country = document.getElementById("country").value;
+        const ethnicity = document.getElementById("ethnicity").value;
+        const state = document.getElementById("state").value;
+        const sex = document.getElementById("sex").value;
         const resume = document.getElementById("resume").files[0];
 
         let valid = true;
@@ -519,6 +466,30 @@
           valid = false;
         }
 
+        if (race === "") {
+          document.getElementById("raceError").innerText = "Race is required.";
+          document.getElementById("raceError").style.display = "block";
+          valid = false;
+        } else {
+          document.getElementById("raceError").style.display = "none";
+        }
+
+        if (ethnicity === "") {
+          document.getElementById("ethnicityError").innerText =
+            "Ethnicity is required.";
+          document.getElementById("ethnicityError").style.display = "block";
+          valid = false;
+        } else {
+          document.getElementById("ethnicityError").style.display = "none";
+        }
+        if (state === "") {
+          document.getElementById("stateError").innerText =
+            "State is required.";
+          document.getElementById("stateError").style.display = "block";
+          valid = false;
+        } else {
+          document.getElementById("stateError").style.display = "none";
+        }
         // Validate Resume Upload
         if (!resume) {
           document.getElementById("resumeError").innerText =
