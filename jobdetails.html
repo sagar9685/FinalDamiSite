@@ -2,9 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Job Details - Dee TechConsulting</title>
-    <link rel="icon" href="img/Deetech_Logo.png" type="image/png" />
+    <title>Job Details - Job Portal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
     <link href="img/favicon.ico" rel="icon" />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
@@ -213,7 +214,6 @@
           </nav>
         </div>
       </div>
-      <!-- Navbar End -->
 
       <!-- Job Details Start -->
       <div class="container py-5">
@@ -308,8 +308,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        console.log("DOM fully loaded and parsed");
+
+        // Check if user is logged in by checking for the presence of authToken in localStorage
         const authToken = localStorage.getItem("authToken");
+
         if (authToken) {
+          console.log("User is considered logged in.");
+          // User is logged in, show Profile and Logout, hide Login and Signup
           document.getElementById("profileButton").style.display =
             "inline-block";
           document.getElementById("logoutButton").style.display =
@@ -317,6 +323,8 @@
           document.getElementById("loginButton").style.display = "none";
           document.getElementById("signupButton").style.display = "none";
         } else {
+          console.log("User is not logged in.");
+          // User is not logged in, show Login and Signup, hide Profile and Logout
           document.getElementById("loginButton").style.display = "inline-block";
           document.getElementById("signupButton").style.display =
             "inline-block";
@@ -324,41 +332,45 @@
           document.getElementById("logoutButton").style.display = "none";
         }
 
+        // Simulating login action (can be replaced with your own login logic)
+        document
+          .getElementById("loginButton")
+          .addEventListener("click", function () {
+            console.log("Login button clicked");
+            localStorage.setItem("authToken", "dummyAuthToken"); // Set the login flag in localStorage
+            window.location.href = "profile.html"; // Redirect to the profile page (or any other page)
+          });
+
+        // Simulating signup action (can be replaced with your own signup logic)
+        document
+          .getElementById("signupButton")
+          .addEventListener("click", function () {
+            console.log("Signup button clicked");
+            localStorage.setItem("authToken", "dummyAuthToken"); // Set the login flag in localStorage
+            window.location.href = "profile.html"; // Redirect to the profile page (or any other page)
+          });
+
+        // Logout function
         document
           .getElementById("logoutButton")
           .addEventListener("click", function () {
-            localStorage.removeItem("authToken");
-            window.location.href = "login.html";
+            console.log("Logout button clicked");
+            localStorage.removeItem("authToken"); // Remove the token from localStorage
+            window.location.href = "login.html"; // Redirect to login page
           });
+      });
+    </script>
 
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
         const jobTitle = new URLSearchParams(window.location.search).get("id");
+
         if (!jobTitle) {
           alert("Job ID is missing!");
           return;
         }
 
-        // Check application status
-        const checkApplicationStatus = () => {
-          $.ajax({
-            url: `https://deetech-production.onrender.com/api/jobs/checkApplicationStatus/${jobTitle}`,
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${authToken}`,
-            },
-            success: function (response) {
-              if (response.applied) {
-                const applyButton = document.getElementById("apply-button");
-                applyButton.textContent = "Applied";
-                applyButton.classList.add("disabled");
-                applyButton.disabled = true;
-              }
-            },
-            error: function (xhr, status, error) {
-              console.error(`Error checking application status: ${error}`);
-            },
-          });
-        };
-
+        // Fetch job details dynamically
         $.ajax({
           url: `https://deetech-production.onrender.com/api/jobs/singlejob/${jobTitle}`,
           method: "GET",
@@ -369,115 +381,70 @@
             }
 
             const jobDetails = `
-                <div class="job-item mb-4">
-                    <h3>${job.title}</h3>
-                    <p><strong>Company:</strong> ${job.company}</p>
-                    <p><strong>Location:</strong> ${job.state}, ${
-              job.country
-            }</p>
-                    <p><strong>Job Type:</strong> ${job.jobtype}</p>
-                    <p><strong>Salary:</strong> ${job.salary}</p>
-                    <p><strong>Description:</strong> ${job.description}</p>
-                    <p><strong>Education Required:</strong> ${job.education}</p>
-                    <p><strong>Experience:</strong> ${job.experience}</p>
-                    <p><strong>Specialization:</strong> ${
-                      job.specialization
-                    }</p>
-                    <p><strong>Last Date to Apply:</strong> ${new Date(
-                      job.lastdatetoapply
-                    ).toLocaleDateString()}</p>
-                    <p><strong>Number of Posts:</strong> ${
-                      job.numberofposts
-                    }</p>
-                    <p><strong>Website:</strong> <a href="${
-                      job.website
-                    }" target="_blank">${job.website}</a></p>
-                    <p><strong>Email:</strong> <a href="mailto:${job.email}">${
+    <div class="job-item mb-4">
+        <h3>${job.title}</h3>
+        <p><strong>Company:</strong> ${job.company}</p>
+        <p><strong>Location:</strong> ${job.state}, ${job.country}</p>
+        <p><strong>Job Type:</strong> ${job.jobtype}</p>
+        <p><strong>Salary:</strong> ${job.salary}</p>
+        <p><strong>Description:</strong> ${job.description}</p>
+        <p><strong>Education Required:</strong> ${job.education}</p>
+        <p><strong>Experience:</strong> ${job.experience}</p>
+        <p><strong>Specialization:</strong> ${job.specialization}</p>
+        <p><strong>Last Date to Apply:</strong> ${new Date(
+          job.lastdatetoapply
+        ).toLocaleDateString()}</p>
+        <p><strong>Number of Posts:</strong> ${job.numberofposts}</p>
+        <p><strong>Website:</strong> <a href="${job.website}" target="_blank">${
+              job.website
+            }</a></p>
+        <p><strong>Email:</strong> <a href="mailto:${job.email}">${
               job.email
             }</a></p>
-                    <button class="btn btn-primary" id="apply-button" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Now</button>
-                </div>
-            `;
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#applyModal">Apply Now</button>
+    </div>
+`;
             $("#job-details").html(jobDetails);
 
-            checkApplicationStatus();
-
+            // Handle modal form submission
             document
               .getElementById("submitApplication")
               .addEventListener("click", function () {
-                const isLoggedIn = sessionStorage.getItem("authToken") !== null;
-                if (!isLoggedIn) {
-                  window.location.href = "login.html";
-                } else {
-                  const userProfile = {
-                    fullName: sessionStorage.getItem("userFullName"),
-                    mobile: sessionStorage.getItem("userMobile"),
-                    resume: sessionStorage.getItem("userResume"),
-                  };
+                const userProfile = {
+                  username: localStorage.getItem("username"),
+                  email: localStorage.getItem("email"),
+                  title: job.title,
+                  description: job.description,
+                  authorizedToWorkInUS: document.getElementById(
+                    "authorizedToWorkInUS"
+                  ).value,
+                  needSponsorship:
+                    document.getElementById("needSponsorship").value,
+                  haveHB2Visa: document.getElementById("haveHB2Visa").value,
+                  haveGreenCard: document.getElementById("haveGreenCard").value,
+                };
 
-                  const mandatoryFields = ["fullName", "mobile", "resume"];
-                  const isProfileComplete = mandatoryFields.every(
-                    (field) =>
-                      userProfile[field] &&
-                      userProfile[field] !== "N/A" &&
-                      userProfile[field] !== "Not Uploaded"
-                  );
-
-                  if (!isProfileComplete) {
+                // Send application data to API
+                $.ajax({
+                  url: "https://deetech-production.onrender.com/jobs/apply-user",
+                  type: "POST",
+                  contentType: "application/json",
+                  data: JSON.stringify(userProfile),
+                  success: function (response) {
                     alert(
-                      "Your profile is incomplete. Please complete all mandatory fields."
+                      response.message ||
+                        "Job application submitted successfully!"
                     );
-                    window.location.href = "profile.html";
-                  }
-                  const jobApplication = {
-                    jobId: jobTitle,
-                    authorizedToWorkInUS: document.getElementById(
-                      "authorizedToWorkInUS"
-                    ).value,
-                    needSponsorship:
-                      document.getElementById("needSponsorship").value,
-                    haveHB2Visa: document.getElementById("haveHB2Visa").value,
-                    haveGreenCard:
-                      document.getElementById("haveGreenCard").value,
-                  };
-
-                  $.ajax({
-                    url: "https://deetech-production.onrender.com/api/jobs/apply",
-                    method: "POST",
-                    contentType: "application/json",
-                    headers: {
-                      Authorization: `Bearer ${sessionStorage.getItem(
-                        "authToken"
-                      )}`, // Include the auth token in headers
-                    },
-                    data: JSON.stringify(jobApplication),
-                    success: function (response) {
-                      alert(response.message || "Job applied successfully!");
-                      $("#applyModal").modal("hide");
-
-                      // Disable the apply button and change text to "Applied"
-                      document.getElementById("apply-button").innerText =
-                        "Applied";
-                      document.getElementById("apply-button").disabled = true;
-                    },
-                    error: function (xhr) {
-                      if (xhr.status === 400) {
-                        const response = JSON.parse(xhr.responseText);
-                        alert(
-                          response.message || "You already applied for this job"
-                        );
-                      } else {
-                        alert(
-                          "There was an issue with your application. Please try again later."
-                        );
-                      }
-                    },
-                  });
-                }
+                    $("#applyModal").modal("hide");
+                  },
+                  error: function (error) {
+                    alert("You have Already Applied for the Job Application");
+                  },
+                });
               });
           },
-          error: function (xhr, status, error) {
-            alert(`Error: ${error}`);
+          error: function (error) {
+            alert("Error fetching job details.");
           },
         });
       });

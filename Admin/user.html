@@ -232,19 +232,23 @@
             <!-- User Table -->
             <table id="userTable">
                 <thead>
-                    <input type="text" id="searchInput" class="search-input"
-                        placeholder="Search by Name, Email, or Country..." onkeyup="searchTable()">
-
+                    <input type="text" id="searchInput" class="search-input" 
+                           placeholder="Search by Name, Email, or Country..." onkeyup="searchTable()">
+            
                     <tr>
                         <th>Sr No.</th>
                         <th>User Name</th>
                         <th>Email</th>
-                        <th>Role</th>
+                        <th>Race</th>
+                        <th>Ethnicity</th>
+                        <th>Sex</th>
+                        <th>State</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- Populated dynamically -->
                 </tbody>
+            </table>
             </table>
         </div>
     </div>
@@ -261,26 +265,29 @@
         }
         // Fetch users
         window.onload = function () {
-            fetch('https://deetech-production.onrender.com/api/getalluser')
-                .then(response => response.json())
-                .then(data => {
-                    const tableBody = document.querySelector('#userTable tbody');
-                    data.users.forEach((user, index) => {
-                        const row = tableBody.insertRow();
-                        row.innerHTML = `
-                            <td>${index + 1}</td>
-                            <td>${user.name || 'N/A'}</td>
-                            <td>${user.email}</td>
-                            <td>${user.role || 'N/A'}</td>
-                        `;
-                    });
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    document.getElementById('lblMsg').textContent = 'Failed to load users.';
-                });
-
-        };
+    fetch('https://deetech-production.onrender.com/api/jobs/profiles')
+        .then(response => response.json())
+        .then(data => {
+            const tableBody = document.querySelector('#userTable tbody');
+            // Assuming the data format returned is an array of user profiles
+            data.profiles.forEach((profile, index) => {
+                const row = tableBody.insertRow();
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${profile.username || 'N/A'}</td>
+                    <td>${profile.email || 'N/A'}</td>
+                    <td>${profile.race || 'N/A'}</td>
+                    <td>${profile.ethnicity || 'N/A'}</td>
+                    <td>${profile.sex || 'N/A'}</td>
+                    <td>${profile.state || 'N/A'}</td>
+                `;
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('lblMsg').textContent = 'Failed to load profiles.';
+        });
+};
         function searchTable() {
             // Get the search input value
             const searchValue = document.getElementById("searchInput").value.toLowerCase();
