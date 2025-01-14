@@ -1053,6 +1053,14 @@
   font-size: 20px;
 }
 
+.social-buttons a {
+  margin-right: 15px; /* Adds spacing between buttons */
+}
+
+.social-buttons a:last-child {
+  margin-right: 0; /* Removes spacing after the last button */
+}
+
 /* Instagram specific */
 .instagram-btn i {
   color: #e4405f; /* Instagram brand color */
@@ -1070,6 +1078,7 @@
 .social-btn:last-child {
   margin-right: 0;
 }
+
 /* New property for custom link */
 .custom-link {
   color: white; /* Dark gray color for visibility */
