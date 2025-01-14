@@ -1129,3 +1129,163 @@
   font-size: 18px;
   color: #fff;
 }
+
+/* Container for all services */
+.services-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+/* Individual service boxes */
+.service-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.service-item-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Service image */
+.service-image img {
+  height: 200px; /* Fixed height for all images */
+  object-fit: cover;
+}
+
+/* Service content wrapper */
+.service-content-wrapper {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+/* Service title styling */
+.service-title {
+  color: #333;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.service-title:hover {
+  color: #007bff;
+}
+
+/* Service description styling */
+.service-description {
+  color: #666;
+  font-size: 14px;
+}
+
+/* Service button styling */
+.service-button {
+  background-color: #007bff;
+  color: #fff;
+  font-size: 14px;
+  border: none;
+  transition: 0.3s ease;
+}
+
+.service-button:hover {
+  background-color: #0056b3;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+/* Service Item Hover Effects */
+.service-container .service-item:hover .service-img img {
+  transform: scale(1.2);
+  transition: transform 0.5s ease;
+}
+
+.service-container .service-item:hover .service-img::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(0, 0, 0, 0.3); /* Semi-transparent overlay */
+  z-index: 1;
+  transition: all 0.5s ease;
+}
+
+.service-container .service-item:hover .service-content::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(0, 0, 0, 0.1); /* Light overlay effect */
+  z-index: 1;
+  transition: all 0.5s ease;
+}
+
+.service-container
+  .service-item:hover
+  .service-content
+  .service-content-inner
+  a.h4 {
+  color: var(--bs-white) !important;
+  transition: color 0.5s ease;
+}
+
+.service-container
+  .service-item:hover
+  .service-content
+  .service-content-inner
+  a.h4:hover {
+  color: var(--bs-primary) !important;
+  transition: color 0.5s ease;
+}
+/* Service Item Hover Effects */
+.service-box:hover .service-image img {
+  transform: scale(1.2);
+  transition: transform 0.5s ease;
+}
+
+.service-box:hover .service-image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3); /* Semi-transparent overlay */
+  z-index: 1;
+  transition: all 0.5s ease;
+}
+
+.service-box:hover .service-content-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1); /* Light overlay effect */
+  z-index: 1;
+  transition: all 0.5s ease;
+}
+
+.service-box:hover .service-title {
+  color: var(--bs-white) !important;
+  transition: color 0.5s ease;
+}
+
+.service-box:hover .service-title:hover {
+  color: var(--bs-primary) !important;
+  transition: color 0.5s ease;
+}
+.service-image,
+.service-content-wrapper {
+  position: relative;
+}

@@ -39,6 +39,100 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet" />
+    <style>
+      /* Common styles for all boxes */
+      .service-box {
+        box-shadow: 0 0 45px rgba(0, 0, 0, 0.3);
+        width: 100%;
+        min-height: 500px; /* Fixed height for all boxes */
+        border-radius: 10px;
+        overflow: hidden;
+        background-color: #f8f9fa;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .service-box .service-img {
+        position: relative;
+        height: 180px; /* Fixed height for all images */
+        overflow: hidden;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+
+      .service-box .service-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .service-box:hover .service-img img {
+        transform: scale(1.2);
+      }
+
+      .service-box .service-content {
+        position: relative;
+        flex-grow: 1;
+        /* padding: 20px;
+        height: 270px; */
+        /* Fixed height for text section */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .service-box:hover .service-content-inner {
+        color: white;
+        text-align: center;
+      }
+
+      .service-box:hover .service-content-inner a.h4 {
+        color: #212529; /* Default text color */
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 18px;
+        transition: color 0.3s ease;
+        margin-bottom: 10px;
+      }
+      .service-box:hover .service-content-inner a.h4 {
+        color: #212529; /* Change text color on hover */
+      }
+      .service-box:hover .service-content-inner a.h4:hover {
+        color: var(--bs-primary);
+      }
+      .service-box .service-content p {
+        font-size: 14px;
+        color: #4b6d8c; /* Muted text color */
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      .service-box:hover .service-content p {
+        color: #0c84f5; /* Change paragraph text color on hover */
+      }
+
+      .service-box .btn {
+        align-self: center;
+        margin-top: auto;
+        padding: 10px 20px;
+        font-size: 14px;
+        border-radius: 30px; /* Rounded buttons */
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      .service-box .btn:hover {
+        background-color: var(--bs-dark);
+        color: #0c84f5;
+      }
+
+      .service-box:hover {
+        background-color: var(
+          --bs-primary
+        ); /* Change background color on hover */
+        color: white;
+      }
+    </style>
   </head>
 
   <body>
@@ -348,12 +442,12 @@
           </h1>
         </div>
         <div class="row g-4 justify-content-center text-center">
-          <!-- Business Intelligence Solution -->
+          <!-- Box 1: Business Intelligence Solution -->
           <div
-            class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp"
+            class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp service-box-1"
             data-wow-delay="0.1s"
           >
-            <div class="service-item bg-light rounded shadow-sm">
+            <div class="service-box bg-light rounded shadow-sm">
               <div class="service-img">
                 <img
                   src="img/service-1.jpg"
@@ -383,12 +477,12 @@
               </div>
             </div>
           </div>
-          <!-- Data Science -->
+          <!-- Box 2: Data Science -->
           <div
-            class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp"
+            class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp service-box-2"
             data-wow-delay="0.3s"
           >
-            <div class="service-item bg-light rounded shadow-sm">
+            <div class="service-box bg-light rounded shadow-sm">
               <div class="service-img">
                 <img
                   src="img/data_science.jpeg"
@@ -418,12 +512,12 @@
               </div>
             </div>
           </div>
-          <!-- Data Platform Implementation -->
+          <!-- Box 3: Data Platform Implementation -->
           <div
-            class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp"
+            class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp service-box-3"
             data-wow-delay="0.5s"
           >
-            <div class="service-item bg-light rounded shadow-sm">
+            <div class="service-box bg-light rounded shadow-sm">
               <div class="service-img">
                 <img
                   src="img/data_platform.jpeg"
@@ -453,12 +547,12 @@
               </div>
             </div>
           </div>
-          <!-- Business Analysis -->
+          <!-- Box 4: Business Analysis -->
           <div
-            class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp"
+            class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp service-box-4"
             data-wow-delay="0.7s"
           >
-            <div class="service-item bg-light rounded shadow-sm">
+            <div class="service-box bg-light rounded shadow-sm">
               <div class="service-img">
                 <img
                   src="img/Business_analysis.jpeg"
@@ -488,12 +582,12 @@
               </div>
             </div>
           </div>
-          <!-- Power BI Development -->
+          <!-- Box 5: Power BI Development -->
           <div
-            class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp"
+            class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp service-box-5"
             data-wow-delay="0.9s"
           >
-            <div class="service-item bg-light rounded shadow-sm">
+            <div class="service-box bg-light rounded shadow-sm">
               <div class="service-img">
                 <img
                   src="img/power_bi.jpeg"
@@ -523,12 +617,12 @@
               </div>
             </div>
           </div>
-          <!-- Data Visualization -->
+          <!-- Box 6: Data Visualization -->
           <div
-            class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp"
+            class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp service-box-6"
             data-wow-delay="1.1s"
           >
-            <div class="service-item bg-light rounded shadow-sm">
+            <div class="service-box bg-light rounded shadow-sm">
               <div class="service-img">
                 <img
                   src="img/data_visulization.jpeg"
@@ -557,14 +651,6 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-12">
-            <a
-              class="btn btn-primary rounded-pill py-3 px-5 wow fadeInUp"
-              data-wow-delay="0.1s"
-              href="contact.html"
-              >Explore All Services</a
-            >
           </div>
         </div>
       </div>
