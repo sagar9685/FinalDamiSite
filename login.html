@@ -240,13 +240,16 @@
             };
 
             // Send API request to validate the login credentials
-            fetch("https://deetech-production.onrender.com/api/auth/login", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(loginData),
-            })
+            fetch(
+              "https://monkfish-app-vqwar.ondigitalocean.app/api/auth/login",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(loginData),
+              }
+            )
               .then((response) => response.json())
               .then((data) => {
                 if (data.token) {

@@ -356,10 +356,13 @@
 
           const jobData = new FormData(this);
 
-          fetch("https://deetech-production.onrender.com/api/jobs/create", {
-            method: "POST",
-            body: jobData,
-          })
+          fetch(
+            "https://monkfish-app-vqwar.ondigitalocean.app/api/jobs/create",
+            {
+              method: "POST",
+              body: jobData,
+            }
+          )
             .then((response) => response.json())
             .then((data) => {
               if (data && data.message) {

@@ -510,10 +510,13 @@
           formData.append("resume", resume);
 
           // Send the data to the API
-          fetch("https://deetech-production.onrender.com/api/jobs/profile", {
-            method: "POST",
-            body: formData,
-          })
+          fetch(
+            "https://monkfish-app-vqwar.ondigitalocean.app/api/jobs/profile",
+            {
+              method: "POST",
+              body: formData,
+            }
+          )
             .then((response) =>
               response
                 .json()

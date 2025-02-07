@@ -1,312 +1,349 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Admin - User List</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
     <style>
-        /* Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+      /* Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
 
-        body {
-            display: flex;
-            min-height: 100vh;
-            background-color: #f4f6f9;
-            color: #333;
-        }
+      body {
+        display: flex;
+        min-height: 100vh;
+        background-color: #f4f6f9;
+        color: #333;
+      }
 
-        /* Sidebar */
-        .sidebar {
-            width: 250px;
-            background-color: #343a40;
-            color: #fff;
-            position: fixed;
-            height: 100vh;
-            transition: width 0.3s;
-            padding-top: 20px;
-        }
+      /* Sidebar */
+      .sidebar {
+        width: 250px;
+        background-color: #343a40;
+        color: #fff;
+        position: fixed;
+        height: 100vh;
+        transition: width 0.3s;
+        padding-top: 20px;
+      }
 
-        .sidebar .logo {
-            font-size: 1.5rem;
-            text-align: center;
-            padding: 1rem;
-            background-color: #23272b;
-            font-weight: bold;
-            color: #fff;
-        }
+      .sidebar .logo {
+        font-size: 1.5rem;
+        text-align: center;
+        padding: 1rem;
+        background-color: #23272b;
+        font-weight: bold;
+        color: #fff;
+      }
 
-        .sidebar ul {
-            list-style-type: none;
-            padding: 0;
-        }
+      .sidebar ul {
+        list-style-type: none;
+        padding: 0;
+      }
 
-        .sidebar ul li {
-            padding: 15px;
-            border-bottom: 1px solid #2a2e32;
-            cursor: pointer;
-        }
+      .sidebar ul li {
+        padding: 15px;
+        border-bottom: 1px solid #2a2e32;
+        cursor: pointer;
+      }
 
-        .sidebar ul li:hover {
-            background-color: #495057;
-        }
+      .sidebar ul li:hover {
+        background-color: #495057;
+      }
 
-        .sidebar ul li a {
-            color: #fff;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
+      .sidebar ul li a {
+        color: #fff;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
 
-        .sidebar ul li a i {
-            margin-right: 10px;
-        }
+      .sidebar ul li a i {
+        margin-right: 10px;
+      }
 
-        /* Main Content */
-        .main-content {
-            margin-left: 250px;
-            padding: 20px;
-            flex-grow: 1;
-        }
+      /* Main Content */
+      .main-content {
+        margin-left: 250px;
+        padding: 20px;
+        flex-grow: 1;
+      }
 
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #fff;
-            padding: 15px;
-            border-bottom: 1px solid #ddd;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #fff;
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
 
-        .header .title {
-            font-size: 1.25rem;
-            font-weight: bold;
-        }
+      .header .title {
+        font-size: 1.25rem;
+        font-weight: bold;
+      }
 
-        /* Background Container */
-        .background-container {
-            background-image: url('../Images/bg.jpg');
-            background-size: cover;
-            background-attachment: fixed;
-            width: 100%;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            color: black;
-        }
+      /* Background Container */
+      .background-container {
+        background-image: url("../Images/bg.jpg");
+        background-size: cover;
+        background-attachment: fixed;
+        width: 100%;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        color: black;
+      }
 
-        /* Table Styling */
-        table {
-            width: 100%;
-            background-color: white;
-            border-collapse: collapse;
-            margin-top: 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+      /* Table Styling */
+      table {
+        width: 100%;
+        background-color: white;
+        border-collapse: collapse;
+        margin-top: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
 
-        table, th, td {
-            border: 1px solid #ddd;
-            text-align: center;
-        }
+      table,
+      th,
+      td {
+        border: 1px solid #ddd;
+        text-align: center;
+      }
 
-        th {
-            background-color: #7200cf;
-            color: white;
-            font-weight: bold;
-            padding: 10px;
-        }
+      th {
+        background-color: #7200cf;
+        color: white;
+        font-weight: bold;
+        padding: 10px;
+      }
 
-        td {
-            padding: 8px;
-        }
+      td {
+        padding: 8px;
+      }
 
-        .delete-icon {
-            cursor: pointer;
-            color: #ff4d4d;
-            transition: color 0.3s;
-        }
+      .delete-icon {
+        cursor: pointer;
+        color: #ff4d4d;
+        transition: color 0.3s;
+      }
 
-        .delete-icon:hover {
-            color: #d11a2a;
-        }
-        .search-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin-bottom: 20px;
-        }
+      .delete-icon:hover {
+        color: #d11a2a;
+      }
+      .search-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 600px;
+        margin-bottom: 20px;
+      }
 
-        .search-input {
-            width: 100%;
-            padding: 15px 40px 15px 40px; /* Extra padding for icon */
-            font-size: 16px;
-            border-radius: 30px;
-            border: 1px solid #ccc;
-            outline: none;
-            background: linear-gradient(135deg, #ff4e50, #f9d423);
-            color: #fff;
-            transition: all 0.3s ease;
-        }
+      .search-input {
+        width: 100%;
+        padding: 15px 40px 15px 40px; /* Extra padding for icon */
+        font-size: 16px;
+        border-radius: 30px;
+        border: 1px solid #ccc;
+        outline: none;
+        background: linear-gradient(135deg, #ff4e50, #f9d423);
+        color: #fff;
+        transition: all 0.3s ease;
+      }
 
-        .search-input::placeholder {
-            color: #fff;
-            opacity: 0.8;
-        }
+      .search-input::placeholder {
+        color: #fff;
+        opacity: 0.8;
+      }
 
-        .search-input:focus {
-            background: linear-gradient(135deg, #ff4e50, #f9d423);
-            border-color: #f9d423;
-            box-shadow: 0 0 10px rgba(249, 212, 35, 0.8);
-        }
+      .search-input:focus {
+        background: linear-gradient(135deg, #ff4e50, #f9d423);
+        border-color: #f9d423;
+        box-shadow: 0 0 10px rgba(249, 212, 35, 0.8);
+      }
 
-        .search-input-icon {
-            position: absolute;
-            top: 50%;
-            left: 15px;
-            transform: translateY(-50%);
-            font-size: 18px;
-            color: #fff;
-        }
+      .search-input-icon {
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        transform: translateY(-50%);
+        font-size: 18px;
+        color: #fff;
+      }
     </style>
-</head>
-<body>
-
-<div class="sidebar">
-    <div class="logo">Admin Panel</div>
-    <ul>
-        <li><a href="dashboard.html"><i class="fas fa-palette"></i> Dashboard</a></li>
-        <li><a href="newjob.html"><i class="fas fa-plus-square"></i> New Job</a></li>
-        <li><a href="joblist.html"><i class="fas fa-file-alt"></i> Job List</a></li>
-        <li><a href="viewreume.html"><i class="fas fa-file-download"></i> View Resume</a></li>
-        <li><a href="jobquery.html"><i class="fas fa-search"></i> Job Query</a></li>
-        <li><a href="user.html"><i class="fas fa-users"></i> User List</a></li>
-        <li><a href="contact.html"><i class="fas fa-comment-alt"></i> Contact List</a></li>
-   </ul>
-</div>
-
-<div class="main-content">
-    <div class="header">
-        <div class="title">User List</div>
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo">Admin Panel</div>
+      <ul>
+        <li>
+          <a href="dashboard.html"><i class="fas fa-palette"></i> Dashboard</a>
+        </li>
+        <li>
+          <a href="newjob.html"><i class="fas fa-plus-square"></i> New Job</a>
+        </li>
+        <li>
+          <a href="joblist.html"><i class="fas fa-file-alt"></i> Job List</a>
+        </li>
+        <li>
+          <a href="viewreume.html"
+            ><i class="fas fa-file-download"></i> View Resume</a
+          >
+        </li>
+        <li>
+          <a href="jobquery.html"><i class="fas fa-search"></i> Job Query</a>
+        </li>
+        <li>
+          <a href="user.html"><i class="fas fa-users"></i> User List</a>
+        </li>
+        <li>
+          <a href="contact.html"
+            ><i class="fas fa-comment-alt"></i> Contact List</a
+          >
+        </li>
+      </ul>
     </div>
 
-    <div class="background-container">
+    <div class="main-content">
+      <div class="header">
+        <div class="title">User List</div>
+      </div>
+
+      <div class="background-container">
         <h3 class="text-center font-weight-bold">User List/Details</h3>
         <p id="lblMsg" class="text-danger text-center"></p>
-        
+
         <!-- User Table -->
         <table id="userTable">
-            <thead>
-                <tr>
-                    <input type="text" id="searchInput" class="search-input" placeholder="Search by Name, Email, or Country..." onkeyup="searchTable()">
+          <thead>
+            <tr>
+              <input
+                type="text"
+                id="searchInput"
+                class="search-input"
+                placeholder="Search by Name, Email, or Country..."
+                onkeyup="searchTable()"
+              />
 
-                    <th>Sr No.</th>
-                    <th>User Name</th>
-                    <th>Email</th>                  
-                    <th>Job Name</th>
-                    <th>Description</th>
-                    <th>authorizedToWorkInUS</th>
-                    <th>needSponsorship</th>
-                    <th>haveHB2Visa</th>
-                    <th>haveGreenCard</th>
-                    <!-- <th>Resume</th> -->
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Table content will be dynamically populated -->
-            </tbody>
+              <th>Sr No.</th>
+              <th>User Name</th>
+              <th>Email</th>
+              <th>Job Name</th>
+              <th>Description</th>
+              <th>authorizedToWorkInUS</th>
+              <th>needSponsorship</th>
+              <th>haveHB2Visa</th>
+              <th>haveGreenCard</th>
+              <!-- <th>Resume</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Table content will be dynamically populated -->
+          </tbody>
         </table>
+      </div>
     </div>
-</div>
 
-<!-- Add jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Add jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<script>
-    if (!sessionStorage.getItem("authToken")) {
-            alert("Unauthorized access! Redirecting to login page...");
-            window.location.href = "login.html";
-        }
+    <script>
+      if (!sessionStorage.getItem("authToken")) {
+        alert("Unauthorized access! Redirecting to login page...");
+        window.location.href = "login.html";
+      }
 
-        
-        function logOut() {
-            // Redirect to login page
-            window.location.href = 'login.html';
-        }
-    $(document).ready(function () {
+      function logOut() {
+        // Redirect to login page
+        window.location.href = "login.html";
+      }
+      $(document).ready(function () {
         // Fetch all users and populate the table
         $.ajax({
-            url: "https://deetech-production.onrender.com/jobs/users", // Your API endpoint
-            type: "GET",
-            success: function (response) {
-                const users = response.data; // Data received from the API
+          url: "https://monkfish-app-vqwar.ondigitalocean.app/jobs/users", // Your API endpoint
+          type: "GET",
+          success: function (response) {
+            const users = response.data; // Data received from the API
 
-                if (users && users.length > 0) {
-                    // Clear any existing rows
-                    $("#userTable tbody").empty();
+            if (users && users.length > 0) {
+              // Clear any existing rows
+              $("#userTable tbody").empty();
 
-                    // Loop through users and append to the table
-                    users.forEach((user, index) => {
-                        const row = `
+              // Loop through users and append to the table
+              users.forEach((user, index) => {
+                const row = `
                             <tr>
                                 <td>${index + 1}</td>
                                 <td>${user.username}</td>
                                 <td>${user.email}</td>
                                 <td>${user.title || "Not Provided"}</td>
                                 <td>${user.description || "Not Assigned"}</td>
-                                <td>${user.authorizedToWorkInUS || "Not Assigned"}</td>
-                                <td>${user.needSponsorship || "Not Assigned"}</td>
+                                <td>${
+                                  user.authorizedToWorkInUS || "Not Assigned"
+                                }</td>
+                                <td>${
+                                  user.needSponsorship || "Not Assigned"
+                                }</td>
                                 <td>${user.haveHB2Visa || "Not Assigned"}</td>
                                 <td>${user.haveGreenCard || "Not Assigned"}</td>
                             </tr>
                         `;
-                        $("#userTable tbody").append(row);
-                    });
-                } else {
-                    $("#lblMsg").text("No users found.");
-                }
-            },
-            error: function (error) {
-                console.error("Error fetching users:", error);
-                $("#lblMsg").text("Error fetching users.");
+                $("#userTable tbody").append(row);
+              });
+            } else {
+              $("#lblMsg").text("No users found.");
             }
+          },
+          error: function (error) {
+            console.error("Error fetching users:", error);
+            $("#lblMsg").text("Error fetching users.");
+          },
         });
-    });
-    function searchTable() {
-            // Get the search input value
-            const searchValue = document.getElementById("searchInput").value.toLowerCase();
+      });
+      function searchTable() {
+        // Get the search input value
+        const searchValue = document
+          .getElementById("searchInput")
+          .value.toLowerCase();
 
-            // Get all rows in the table
-            const rows = document.getElementById("userTable").getElementsByTagName("tr");
+        // Get all rows in the table
+        const rows = document
+          .getElementById("userTable")
+          .getElementsByTagName("tr");
 
-            // Loop through all rows and hide those that don't match the search term
-            for (let i = 0; i < rows.length; i++) {
-                const cells = rows[i].getElementsByTagName("td");
-                let found = false;
+        // Loop through all rows and hide those that don't match the search term
+        for (let i = 0; i < rows.length; i++) {
+          const cells = rows[i].getElementsByTagName("td");
+          let found = false;
 
-                // Loop through each cell in the row and check if any of them match the search term
-                for (let j = 0; j < cells.length; j++) {
-                    const cellText = cells[j].textContent || cells[j].innerText;
-                    if (cellText.toLowerCase().includes(searchValue)) {
-                        found = true;
-                        break;
-                    }
-                }
-
-                // If a match is found, show the row, otherwise hide it
-                if (found) {
-                    rows[i].style.display = "";
-                } else {
-                    rows[i].style.display = "none";
-                }
+          // Loop through each cell in the row and check if any of them match the search term
+          for (let j = 0; j < cells.length; j++) {
+            const cellText = cells[j].textContent || cells[j].innerText;
+            if (cellText.toLowerCase().includes(searchValue)) {
+              found = true;
+              break;
             }
-        }
-</script>
+          }
 
-</body>
+          // If a match is found, show the row, otherwise hide it
+          if (found) {
+            rows[i].style.display = "";
+          } else {
+            rows[i].style.display = "none";
+          }
+        }
+      }
+    </script>
+  </body>
 </html>

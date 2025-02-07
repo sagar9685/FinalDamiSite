@@ -372,7 +372,7 @@
 
         // Fetch job details dynamically
         $.ajax({
-          url: `https://deetech-production.onrender.com/api/jobs/singlejob/${jobTitle}`,
+          url: `https://monkfish-app-vqwar.ondigitalocean.app/api/jobs/singlejob/${jobTitle}`,
           method: "GET",
           success: function (job) {
             if (!job) {
@@ -424,7 +424,7 @@
 
                 // Send application data to API
                 $.ajax({
-                  url: "https://deetech-production.onrender.com/jobs/apply-user",
+                  url: "https://monkfish-app-vqwar.ondigitalocean.app/jobs/apply-user",
                   type: "POST",
                   contentType: "application/json",
                   data: JSON.stringify(userProfile),
