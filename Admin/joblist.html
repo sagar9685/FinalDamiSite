@@ -302,7 +302,7 @@
 
           if (confirm("Are you sure you want to delete this job?")) {
             $.ajax({
-              url: `https://monkfish-app-vqwar.ondigitalocean.app//api/jobs/delete/${jobId}`,
+              url: `https://monkfish-app-vqwar.ondigitalocean.app/api/jobs/delete/${jobId}`,
               type: "DELETE",
               success: function (response) {
                 console.log(response);

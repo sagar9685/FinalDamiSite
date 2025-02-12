@@ -383,18 +383,19 @@
             const jobDetails = `
     <div class="job-item mb-4">
         <h3>${job.title}</h3>
-        <p><strong>Company:</strong> ${job.company}</p>
+      
         <p><strong>Location:</strong> ${job.state}, ${job.country}</p>
-        <p><strong>Job Type:</strong> ${job.jobtype}</p>
+        <p><strong>Job Type:</strong> ${job.jobType}</p>
         <p><strong>Salary:</strong> ${job.salary}</p>
         <p><strong>Description:</strong> ${job.description}</p>
         <p><strong>Education Required:</strong> ${job.education}</p>
         <p><strong>Experience:</strong> ${job.experience}</p>
         <p><strong>Specialization:</strong> ${job.specialization}</p>
-        <p><strong>Last Date to Apply:</strong> ${new Date(
-          job.lastdatetoapply
+        <p><strong>Last Date to Apply:</strong>  ${new Date(
+          job.lastDate
         ).toLocaleDateString()}</p>
-        <p><strong>Number of Posts:</strong> ${job.numberofposts}</p>
+        
+        <p><strong>Number of Posts:</strong> ${job.numberOfPosts}</p>
        
         <p><strong>Email:</strong> <a href="mailto:${job.email}">${
               job.email
